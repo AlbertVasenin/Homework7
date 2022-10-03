@@ -115,9 +115,11 @@ public class Main {
         int PutMoneyOneMonthOnBalance = 15_000; // пополнение счета в банке каждый месяц
         int percent = 7; // процент в месяц = 0.07
         while (month<108){
-            month +=6;
-            BankAccount = month * (PutMoneyOneMonthOnBalance * 1.07);
+            month ++;
+            BankAccount = (BankAccount + PutMoneyOneMonthOnBalance) * 1.07;
+            if(month%6==0){
             System.out.println("Месяц " + month + " сумма накоплений равна " + Math.round(BankAccount) + " рублей");
+            }
         }
         System.out.println("Итого: " + (month / 12) + " лет " + (month%12) + " месяцев");
         System.out.println();
