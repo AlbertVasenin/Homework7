@@ -20,13 +20,11 @@ public class Main {
         // для накопления данной суммы.
         double BankAccount = 0; // счет в банке
         int month = 0; // месяцы
-        int PutMoneyOneMonthOnBalance = 29_000; // пополнение счета в банке каждый месяц
+        double PutMoneyOneMonthOnBalance = 29_000; // пополнение счета в банке каждый месяц
         while(BankAccount <= 2_459_000) {
             month++;
-            BankAccount = month * PutMoneyOneMonthOnBalance * 1.01; // пополнение счета в банке каждый месяц с процентами (12% годовых)
-            System.out.print("Месяц "+ month +", сумма накоплений равна ");
-            System.out.printf("%.2f рублей",BankAccount);
-            System.out.println();
+            BankAccount = (PutMoneyOneMonthOnBalance + BankAccount) * 1.01;
+            System.out.println("Месяц " + month + ", сумма накоплений равна " + Math.round(BankAccount) + " рублей");
         }
         System.out.println();
     }
@@ -60,7 +58,7 @@ public class Main {
         int population_Y = 12_000_000;
         int fertility_1000 = 17; // рождаемость 17 чел на 1000 чел
         int RIP = 8; // смертность 8 чел на 1000 чел
-        int PlusPopulation_Y = 17 * 1_000 - 8 * 1_000;
+        int PlusPopulation_Y = fertility_1000 * 1_000 - RIP * 1_000;
         for(int year = 1; year <= 10; year++) {
             population_Y = population_Y + PlusPopulation_Y;
             System.out.println("Год " + year + ", численность населения составляет " + population_Y + " человек");
@@ -80,13 +78,12 @@ public class Main {
         double BankAccount = 0; // счет в банке
         int month = 0; // месяцы
         int PutMoneyOneMonthOnBalance = 15_000; // пополнение счета в банке каждый месяц
-        int percent = 7; // процент в месяц
         while (BankAccount<=12_000_000){
             month++;
-            BankAccount = month * (PutMoneyOneMonthOnBalance * 1.07);
+            BankAccount = (BankAccount + PutMoneyOneMonthOnBalance) * 1.07;
             System.out.println("Месяц " + month + " сумма накоплений равна " + Math.round(BankAccount) + " рублей");
         }
-        System.out.println("Итого: " + (month / 12) + " года " + (month%12) + " месяца");
+        System.out.println("Итого: " + (month / 12) + " года " + (month%12) + " месяцев");
         System.out.println();
     }
 
@@ -96,13 +93,14 @@ public class Main {
         double BankAccount = 0; // счет в банке
         int month = 0; // месяцы
         int PutMoneyOneMonthOnBalance = 15_000; // пополнение счета в банке каждый месяц
-        int percent = 7; // процент в месяц = 0.07
         while (BankAccount<=12_000_000){
-            month +=6;
-            BankAccount = month * (PutMoneyOneMonthOnBalance * 1.07);
+            month ++;
+            BankAccount = (BankAccount + PutMoneyOneMonthOnBalance) * 1.07;
+            if(month%6==0){
             System.out.println("Месяц " + month + " сумма накоплений равна " + Math.round(BankAccount) + " рублей");
+            }
         }
-        System.out.println("Итого: " + (month / 12) + " года " + (month%12) + " месяца");
+        System.out.println("Итого: " + (month / 12) + " года " + (month%12) + " месяцев");
         System.out.println();
     }
 
@@ -156,9 +154,9 @@ public class Main {
         //1896
         //1975
         //2054
-        int yearStart = 1900;
-        int yearWas = 2100;
-        while (yearStart <= yearWas) {
+        int yearStart = 1817;
+        int yearWas = 2054;
+        while (yearStart < yearWas) {
             yearStart+=79;
             System.out.println("Год " + yearStart);
         }
